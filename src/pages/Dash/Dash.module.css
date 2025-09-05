@@ -36,7 +36,7 @@
 
 .content {
   display: flex;
-  flex: 1;
+  flex-wrap: wrap;
   width: 100%;
   padding-top: 10px; /* Header altında boşluk bırak */
   
@@ -68,11 +68,9 @@
 }
 
 .transactionsContainer {
-  width: 83%;
-  padding-right: 24px;
-  flex-shrink: 0;
+  width: 68%;
+  padding: 8px;
   box-sizing: border-box;
-  min-width: 0;
   overflow-x: hidden; /* Yatay scroll engelle */
   /* overflow-y: auto; kaldırıldı - sayfa scroll kullanacak */
 }
@@ -110,6 +108,7 @@
   
   .transactionsContainer {
     width: 100%; 
+    min-width: 480px;
     padding: 16px;
     overflow-x: hidden; /* Yatay scroll engelle */
   }
@@ -151,6 +150,7 @@
   
   .transactionsContainer {
     width: 100%; 
+    min-width: none;
     padding: 16px;
     overflow-x: hidden; /* Yatay scroll engelle */
   }

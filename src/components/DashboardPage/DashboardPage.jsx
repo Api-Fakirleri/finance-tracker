@@ -30,7 +30,10 @@ const DashboardPage = () => {
             <Navigation />
             {(isTablet || isDesktop) && <Balance />}
           </div>
-          {(isTablet || isDesktop) && <Currency />}
+          <div className={s.currency}>
+            {(isTablet || isDesktop) && <Currency />}
+          </div>
+          
         </div>
         <div className={s.outlet_container}>
           <Outlet />

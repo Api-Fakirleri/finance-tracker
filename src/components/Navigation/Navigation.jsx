@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 const getNavLinkClass = ({ isActive }) =>
   isActive ? s.navLinkActive : s.navLink;
 
+
 const Navigation = () => {
   return (
     <section className={s.navigation}>

@@ -3,7 +3,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; 
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,7 @@
 
 .navHome {
   margin-bottom: 12px;
+
 }
 
 .navCurrency {
@@ -23,10 +23,14 @@
   gap: 32px;
 }
 
+.currency{
+  align-self: flex-end;
+}
+
 @media screen and (min-width: 768px) {
   .main_container {
-    background-image: url(../../assets/img/bg_tablet_dashboard.png);
-    height: calc(100vh - 68px);
+    margin-bottom: 80px;
+    min-height: 0;
   }
 
   .outlet_container {
@@ -44,13 +48,15 @@
     justify-content: space-between;
     align-items: start;
     flex-direction: row;
+    margin-bottom: 0px;
+
   }
 
   .nav_container {
     display: block;
     max-width: 480px;
     box-shadow: 1px 4px 10px 0 rgba(0, 0, 0, 0.25);
-    height: 100%;
+    min-height: 100vh;
     border-right: 1px solid #d9d9d9;
   }
 

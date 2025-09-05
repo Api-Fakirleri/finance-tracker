@@ -1,4 +1,11 @@
+:root {
+  --clr: linear-gradient(167deg, rgb(255, 199, 39) 0%, rgb(158, 64, 186) 61.46%, rgb(112, 0, 255) 90.54%);
+--orange: linear-gradient(96.76deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%);
+  
 
+
+
+}
 .navElements {
   display: flex;
   flex-direction: row;
@@ -24,8 +31,10 @@
 .navLinkActive .transactions,
 .navLinkActive .statistics,
 .navLinkActive .currency {
-  background-color: var(--icon-violet);
+  background-image: var(--clr);
+  color: white;
 }
+
 .navLink .transactions,
 .navLink .statistics,
 .navLink .currency {
@@ -80,12 +89,15 @@
     color: wheat;
   }
 
+
   .navLink:hover .linkText {
     transform: scale(1.1);
   }
   .navLinkActive .linkText {
     font-weight: 700;
     font-size: 18px;
+    color:chocolate;
+    text-decoration: underline;    
   }
 
   .transactions,
