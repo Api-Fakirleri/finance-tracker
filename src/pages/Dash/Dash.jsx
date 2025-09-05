@@ -30,7 +30,7 @@ export default function DashboardHome() {
       navigate('/login');
       return;
     }
-
+    document.title = "Dashboard";
     // Giriş yapmışsa API isteklerini yap
     dispatch(getTransactions());
   }, [dispatch, isLoggedIn, token, navigate]);

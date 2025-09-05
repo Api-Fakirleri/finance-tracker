@@ -34,6 +34,7 @@ const pickUser = (payload) => {
 };
 
 const slice = createSlice({
+  
   name: "auth",
   initialState,
   reducers: {

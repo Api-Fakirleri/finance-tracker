@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
 import styles from "./TransactionsItem.module.css";
-import EditIcon from "../../images/edit-02.svg"; 
+import EditIcon from "../../images/edit-02.svg";
 const TransactionsItem = ({ transaction, onEdit, onDelete }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const isIncome = transaction.type === "INCOME";

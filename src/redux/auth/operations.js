@@ -1,13 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setToken, removeToken, userTransactionsApi } from "../../shared/api";
-
+import axios from "axios";
 const AUTH_ENDPOINTS = {
   signUp: "/api/auth/sign-up",
   signIn: "/api/auth/sign-in",
   signOut: "/api/auth/sign-out",
   current: "/api/users/current",
 };
-
+export const addTransaction = createAsyncThunk(
+  "transactions/addTransaction",
+  async (transactionData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/api/transactions", transactionData);
+      return response.data; // backend’den gelen yeni transaction
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 // REGISTER → backend username bekliyor
 export const register = createAsyncThunk(
   "auth/register",

@@ -1,0 +1,125 @@
+.editForm {
+    background-color: transparent;
+}
+
+.overlay1 {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal1 {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 400px;
+    position: relative;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+body1 {
+    font-family: "Arial", sans-serif;
+    background: radial-gradient(circle at top left, #2b1f70, #0f0526);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.modal1 {
+    background: #2d1e67;
+    padding: 30px;
+    border-radius: 12px;
+    width: 360px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: relative;
+}
+
+.modal h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.tabs span {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.type {
+    color: #E0E0E0;
+}
+
+.typeactive {
+    color: #FFB627;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.inputRow {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+.inputRow input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+.date {
+    width: 120px;
+    text-align: right;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.calendarIcon {
+    color: #734AEF;
+}

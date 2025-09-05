@@ -20,6 +20,7 @@ body {
     radial-gradient(80% 120% at 80% 100%, #7a76c0, transparent 60%),
     linear-gradient(120deg, #3b2b59, #5f4da0 50%, #7a76c0) !important;
 }
+
 .iziToast.custom-error-toast {
   background: radial-gradient(80% 120% at 20% 0%, #220540, transparent 60%),
     radial-gradient(80% 120% at 80% 100%, var(--bg-3), transparent 60%),
@@ -28,25 +29,31 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 10px 30px rgba(10, 6, 23, 0.55) !important;
 }
+
 .iziToast.custom-success-toast .iziToast-close,
 .iziToast.custom-error-toast .iziToast-close {
-  color: #dbeafe !important; /* light blue */
+  color: #dbeafe !important;
+  /* light blue */
   opacity: 0.95 !important;
 }
+
 /* SUCCESS */
 .iziToast.custom-success-toast {
   box-shadow: 0 10px 30px rgba(10, 6, 23, 0.55),
     0 0 0 1px rgba(34, 197, 94, 0.25) inset !important;
   border-left: 4px solid var(--accent-success) !important;
 }
+
 .iziToast.custom-success-toast .iziToast-title {
   color: #b9ffcc !important;
   font-weight: 700;
 }
+
 .iziToast.custom-success-toast .iziToast-message {
   color: lightgreen !important;
 }
-.iziToast.custom-success-toast .iziToast-progressbar > div {
+
+.iziToast.custom-success-toast .iziToast-progressbar>div {
   background: linear-gradient(90deg, #16a34a, var(--accent-success)) !important;
 }
 
@@ -56,15 +63,18 @@ body {
     0 0 0 1px rgba(255, 88, 113, 0.25) inset !important;
   border-left: 4px solid var(--accent-error) !important;
 }
+
 .iziToast.custom-error-toast .iziToast-title {
   color: #ffb3bf !important;
   font-weight: 700;
 }
+
 .iziToast.custom-error-toast .iziToast-message {
   color: lightcoral !important;
   font-weight: 700;
 }
-.iziToast.custom-error-toast .iziToast-progressbar > div {
+
+.iziToast.custom-error-toast .iziToast-progressbar>div {
   background: linear-gradient(90deg, #ef4444, #f97316) !important;
 }
 
@@ -89,15 +99,17 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 body {
-  margin: 0;  
+  margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden; /* Yatay scroll engelle */
+  overflow-x: hidden;
+  /* Yatay scroll engelle */
 }
 
 h1 {
@@ -116,9 +128,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -129,10 +143,23 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+.react-date-picker__wrapper {
+  border: none !important;
+}
+
+.react-calendar__tile {
+  background: transparent;
+  color: black;
+  border-radius: 6px;
 }
