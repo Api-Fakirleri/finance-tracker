@@ -206,9 +206,7 @@ body {
     margin: 0 auto;
   }
 
-  .filterContainer {
-    gap: 30px;
-  }
+
   .summary {
     position: relative;
     bottom: 20px;
