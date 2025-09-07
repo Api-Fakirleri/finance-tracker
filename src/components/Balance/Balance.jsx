@@ -8,10 +8,10 @@ import useMedia from "../../hooks/useMedia";
 import clsx from "clsx";
 import s from "./Balance.module.css";
 
-const Balance = () => {
+const Balance = ({totalBalance}) => {
   const dispatch = useDispatch();
-  const rawBalance = useSelector(selectUserBalance);
-  const balance = Number(rawBalance ?? 0); // her zaman number
+  //const rawBalance = useSelector(selectUserBalance);
+  const balance = Number(totalBalance ?? 0); // her zaman number
   const currencyData = useSelector(selectCurrencyData);
   const { isMobile } = useMedia();
 

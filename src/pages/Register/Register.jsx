@@ -4,7 +4,10 @@ import css from "./Register.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { Navigate, useNavigate } from "react-router-dom";
-import { selectIsLoggedIn, selectIsRefreshing } from "../../redux/auth/selectors";
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "../../redux/auth/selectors";
 import { selectTransactionsLoading } from "../../redux/transactions/selectors";
 import { IoMailOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -16,17 +19,25 @@ import Loader from "../../components/Loader/Loader";
 import "izitoast/dist/css/iziToast.min.css";
 import iziToast from "izitoast";
 
-const PASSWORD_REGEX = /^[A-Za-z0-9!@#$%^&*()_\-+=\\[\]{};:'",.<>/?\\|`~.]+$/;
+// ✅ En az 1 küçük, 1 büyük, 1 sayı, 1 özel karakter kontrolü
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).+$/;
 
 // Yup şema
 const RegisterSchema = Yup.object({
-  username: Yup.string().trim().min(3, "En az 3 Karakter").max(30, "En fazla 30 karakter").required("Zorunlu"),
+  username: Yup.string()
+    .trim()
+    .min(3, "En az 3 Karakter")
+    .max(30, "En fazla 30 karakter")
+    .required("Zorunlu"),
   email: Yup.string().email("Geçerli bir e-posta gir").required("Zorunlu"),
   password: Yup.string()
     .min(6, "En az 6 karakter")
     .max(18, "En fazla 18 karakter")
     .required("Zorunlu")
-    .matches(PASSWORD_REGEX, "Şifre en az 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir"),
+    .matches(
+      PASSWORD_REGEX,
+      "Şifre en az 1 büyük harf, 1 küçük harf, 1 rakam ve 1 özel karakter içermelidir"
+    ),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Şifreler eşleşmiyor")
     .required("Zorunlu"),
@@ -102,7 +113,12 @@ export default function Register() {
                 {/* Username */}
                 <div className={css.inputWrap}>
                   <MdPerson2 className={css.icon} />
-                  <Field name="username" type="text" placeholder="Name" className={css.text} />
+                  <Field
+                    name="username"
+                    type="text"
+                    placeholder="Name"
+                    className={css.text}
+                  />
                 </div>
                 <div className={css.error}>
                   <ErrorMessage name="username" />
@@ -111,7 +127,12 @@ export default function Register() {
                 {/* Email */}
                 <div className={css.inputWrap}>
                   <IoMailOutline className={css.icon} />
-                  <Field name="email" type="email" placeholder="E-mail" className={css.text} />
+                  <Field
+                    name="email"
+                    type="email"
+                    placeholder="E-mail"
+                    className={css.text}
+                  />
                 </div>
                 <div className={css.error}>
                   <ErrorMessage name="email" />
@@ -120,7 +141,12 @@ export default function Register() {
                 {/* Password */}
                 <div className={css.inputWrap}>
                   <RiLockPasswordLine className={css.icon} />
-                  <Field name="password" type="password" placeholder="Password" className={css.text} />
+                  <Field
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    className={css.text}
+                  />
                 </div>
                 <div className={css.error}>
                   <ErrorMessage name="password" />
@@ -129,7 +155,12 @@ export default function Register() {
                 {/* Confirm Password */}
                 <div className={css.inputWrap}>
                   <RiLockPasswordLine className={css.icon} />
-                  <Field name="confirmPassword" type="password" placeholder="Confirm Password" className={css.text} />
+                  <Field
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm Password"
+                    className={css.text}
+                  />
                 </div>
                 <div className={css.error}>
                   <ErrorMessage name="confirmPassword" />
@@ -138,11 +169,19 @@ export default function Register() {
                 <PassControl password={values.password} />
               </div>
 
-              <button className={css.login} type="submit" disabled={authLoading || isSubmitting || isLoading}>
+              <button
+                className={css.login}
+                type="submit"
+                disabled={authLoading || isSubmitting || isLoading}
+              >
                 REGISTER
               </button>
 
-              <button className={css.reg} type="button" onClick={() => navigate("/")}>
+              <button
+                className={css.reg}
+                type="button"
+                onClick={() => navigate("/")}
+              >
                 LOG IN
               </button>
 

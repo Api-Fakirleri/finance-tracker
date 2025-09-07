@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { updateTransaction } from "../../redux/transactions/operations";
 import iziToast from "izitoast";
 
-//Yup schema
+// Yup schema
 const schema = Yup.object().shape({
   amount: Yup.number()
     .typeError("Amount must be a number")
@@ -18,6 +18,7 @@ const schema = Yup.object().shape({
   transactionDate: Yup.date().required("Date is required"),
   comment: Yup.string().max(50, "Comment can be max 50 characters"),
 });
+
 const EditTransactionForm = ({ onClose, transaction }) => {
   const dispatch = useDispatch();
 
@@ -30,50 +31,58 @@ const EditTransactionForm = ({ onClose, transaction }) => {
   } = useForm({
     defaultValues: {
       amount: Math.abs(transaction.amount),
-      categoryName: transaction.categoryName,
       transactionDate: transaction.transactionDate
         ? new Date(transaction.transactionDate)
-        : new Date(), // eğer boşsa bugünün tarihi
+        : new Date(),
       comment: transaction.comment || "",
     },
   });
-  //custom submit, yup validate kullanıyor
-  const customSubmit = async (data) => {
-    data.amount = transaction.type === "INCOME" ? data.amount : 0 - data.amount;
+
+  const customSubmit = async (formData) => {
+    // ✅ Backend’in beklediği formata uygun hale getiriyoruz
+    const data = {
+      ...formData,
+      amount:
+        transaction.type === "INCOME" ? formData.amount : 0 - formData.amount,
+      transactionDate: new Date(formData.transactionDate).toISOString(),
+    };
+
+    // Gelir işleminde kategori gönderilmemeli
+    if (transaction.type === "INCOME") {
+      delete data.categoryName;
+    }
+
     try {
       await schema.validate(data, { abortEarly: false });
-      // dispatch ile API'ye gönder
-      dispatch(updateTransaction({ id: transaction.id, data }))
-        .unwrap()
-        .then(() => {
-          // Başarılı toast mesajı
-          iziToast.success({
-            title: "Başarılı ✅",
-            message: "Kaydedildi",
-            position: "topRight",
-            timeout: 2000,
-            class: "custom-success-toast",
-            theme: "dark",
-          });
-          onClose(); // modal kapat
-        })
-        .catch((err) => {
-          // Hata toast mesajı
-          iziToast.error({
-            title: "Hata ❌",
-            message: error.message || "Kayıt başarısız",
-            position: "topRight",
-            timeout: 3000,
-            class: "custom-error-toast",
-            theme: "dark",
-          });
-          console.error("Update failed", err);
-        });
-    } catch (validationErrors) {
-      // Yup hatalarını react-hook-form'a aktar
-      validationErrors.inner.forEach((err) => {
-        setError(err.path, { type: "manual", message: err.message });
+
+      await dispatch(updateTransaction({ id: transaction.id, data })).unwrap();
+
+      iziToast.success({
+        title: "Başarılı ✅",
+        message: "Kaydedildi",
+        position: "topRight",
+        timeout: 2000,
+        class: "custom-success-toast",
+        theme: "dark",
       });
+
+      onClose();
+    } catch (err) {
+      if (err.name === "ValidationError") {
+        err.inner.forEach((e) => {
+          setError(e.path, { type: "manual", message: e.message });
+        });
+      } else {
+        iziToast.error({
+          title: "Hata ❌",
+          message: err.message || "Kayıt başarısız",
+          position: "topRight",
+          timeout: 3000,
+          class: "custom-error-toast",
+          theme: "dark",
+        });
+        console.error("Update failed", err);
+      }
     }
   };
 
@@ -105,13 +114,7 @@ const EditTransactionForm = ({ onClose, transaction }) => {
         <form onSubmit={handleSubmit(customSubmit)}>
           {transaction.type === "EXPENSE" && (
             <div className={styles.inputRow}>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder=""
-                {...register("categoryName")}
-                readOnly
-              />
+              <label className={styles.input}>{transaction.categoryName}</label>
             </div>
           )}
           <div className={styles.inputRow}>
@@ -181,4 +184,5 @@ const EditTransactionForm = ({ onClose, transaction }) => {
     </div>
   );
 };
+
 export default EditTransactionForm;

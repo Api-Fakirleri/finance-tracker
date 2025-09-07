@@ -1,5 +1,5 @@
 /* filepath: /home/ohhamamcioglu/finance-tracker/src/pages/Dash/Dash.jsx */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import TransactionsList from "../../components/TransactionsList/TransactionsList.jsx";
@@ -14,6 +14,9 @@ import Loader from "../../components/Loader/Loader.jsx";
 import styles from "./Dash.module.css";
 
 export default function DashboardHome() {
+const[ totalBalance,setTotalBalance] = useState(0)
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -43,11 +46,11 @@ export default function DashboardHome() {
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.content}>
-        <DashboardPage />
+        <DashboardPage totalBalance={totalBalance} /* setBalance={(balance)=>setTotalBalance(balance)} *//>
         <div className={styles.transactionsContainer}>
           {isLoading && <Loader />}
           {error && <div className={styles.error}>Error: {error}</div>}
-          {!isLoading && !error && <TransactionsList />}
+          {!isLoading && !error && <TransactionsList  setBalance={(a)=>setTotalBalance(a)} />}
         </div>
       </div>
       <RuleBotWidget />

@@ -72,7 +72,6 @@ const TransactionsItem = ({ transaction, onEdit, onDelete }) => {
       </div>
     );
   }
-
   return (
     <tr>
       <td>{formatDate(transaction.transactionDate)}</td>

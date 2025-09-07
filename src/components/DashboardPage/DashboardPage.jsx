@@ -8,7 +8,7 @@ import s from "./Dashboard.module.css";
 import { useLocation } from "react-router-dom";
 import useMedia from "../../hooks/useMedia";
 
-const DashboardPage = () => {
+const DashboardPage = ({totalBalance}) => {
  
 
 
@@ -28,7 +28,7 @@ const DashboardPage = () => {
             }`}
           >
             <Navigation />
-            {(isTablet || isDesktop) && <Balance />}
+            {(isTablet || isDesktop) && <Balance totalBalance={totalBalance} />}
           </div>
           <div className={s.currency}>
             {(isTablet || isDesktop) && <Currency />}

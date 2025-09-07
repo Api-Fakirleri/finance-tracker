@@ -16,7 +16,7 @@
   border-radius: 8px;
   max-width: 280px;
   margin: 0 auto;
-  gap:14px
+  gap: 14px;
 }
 
 span {
@@ -137,7 +137,7 @@ span {
   }
 
   .balance {
-    padding-left: 40px;
+    margin-top: 50px;
   }
 
   .buttons {

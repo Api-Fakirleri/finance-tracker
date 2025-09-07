@@ -22,7 +22,7 @@
   align-items: end;
   gap: 32px;
 }
-.currency{
+.currency {
   align-self: flex-end;
 }
 @media screen and (max-width: 767px) {
@@ -30,6 +30,7 @@
     padding: 30px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .outlet_container {
     width: 100%;
