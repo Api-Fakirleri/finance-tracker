@@ -1,8 +1,6 @@
 .filterContainer {
   display: flex;
-  justify-content: flex-start;
-  gap: 41px;
-  margin-left: 10px;
+  max-width: 530px;
 }
 
 .selectDark,
@@ -13,18 +11,20 @@
   font-size: 17px;
   
 }
+.filterContainer, .selectWrapper{
+  width: 100%;;
+}
 
 .selectDark {
-  width: 240px;
+  min-width: 100%;
   height: 50px;
-  padding: 0.5rem 1rem;
   border-radius: 8px;
   border: 1px solid #fff;
   background: transparent;
   color: #fff;
   outline: none;
   appearance: none;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .selectDark option {
@@ -42,33 +42,10 @@
   color: #ff868d;
 }
 
-.selectWrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.selectWrapper select {
-  appearance: none;
-  padding-right: 24px;
-  
-}
-
-.selectIcon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: #fff;
-  width: 25px;
-  height: 25px;
-  
-}
 
 .transactionList {
-  overflow-y: auto;
-  width: 75%;
-  padding: 30px;
+  max-width: 530px;
+  padding: 30px 0px;
   overflow-x: hidden;
 }
 
@@ -104,53 +81,43 @@
   height: 12px;
   border-radius: 50%;
 }
-
-.summary {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 2rem;
-  position: relative;
-  right: 30px;
-  padding: 0 -20px;
-}
-
 .summary .transactionInfo {
   display: flex;
   justify-content: space-around; /* kategori solda, miktar sağda */
   align-items: center;
-  font-weight: 700;
   font-size: 17px;
-  margin: 0;
-  gap: 20px;
-  padding: 0;
-  position: relative;
 }
+
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  max-width: 520px;
+
+  gap: 20px;
+}
+
+
+.summary .transactionInfos {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+} 
+
 
 .categ {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 600;
-  padding: 16px 0px;
+  font-weight: 00;
 }
 
 .sum {
   font-weight: 600;
 }
 
-.categDiv {
-  background-color: #523b7e;
-  width: 395px;
-  height: 56px;
-  border-radius: 8px;
-  margin: 20px 0;
-  position: relative;
-  left: -20px;
-  padding: 0 20px;
-  font-size: 18px;
-}
+
 
 .selectWrapper {
   position: relative;
@@ -203,12 +170,9 @@ body {
 
 .categDiv {
   background-color: #523b7e;
-  width: calc(100% - 20px); /* transactionItem ile aynı */
   height: 56px;
   border-radius: 8px;
   margin: 20px 0;
-  position: relative;
-  left: -20px; /* transactionItem::after ile aynı hizaya gelir */
   padding: 0 20px;
 }
 .rightSide {
@@ -227,20 +191,9 @@ body {
     top: 500px;
     right: 700px;
   }
-  .summary {
-    padding: 0 65px;
-    
-  }
-  .summary .transactionInfo {
-    margin-left: 0;
-    padding: 0;
-    justify-content: space-between;
-    right: 10px;
-  }
 
   .selectWrapper {
-    max-width: 160px;
-    gap: 16px;
+    max-width: 100%;
   }
   .rightSide {
     position: relative;
@@ -254,7 +207,7 @@ body {
   }
 
   .filterContainer {
-    margin-left: 55px;
+    gap: 30px;
   }
   .summary {
     position: relative;
@@ -262,7 +215,7 @@ body {
     right: 5px;
   }
   .selectDark {
-    width: 180px;
+    min-width: 100%;
   }
 }
 
@@ -270,7 +223,7 @@ body {
   .container {
     display: flex;
     flex-direction: column;
-   width: calc(100% - 2rem);
+    width: calc(100% - 2rem);
     align-items: center;
     padding: 0 20px; /* kenarlardan boşluk */
     width: 100%;
@@ -335,14 +288,10 @@ body {
   }
 
   .categDiv {
-    width: calc(100% - 20px);
     padding: 0px;
-    margin-left: 20px;
   }
   .categ {
     padding: 0 16px;
   }
-  .sum {
-    position: relative;
-  }
+ 
 }

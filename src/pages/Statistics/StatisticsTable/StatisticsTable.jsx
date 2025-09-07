@@ -82,11 +82,11 @@ const StatisticsTable = ({
       </div>
 
       <div className={styles.summary}>
-        <div className={styles.transactionInfo}>
+        <div className={styles.transactionInfos}>
           <span>Expense:</span>
           <span style={{ color: "#FF868D", fontWeight: 700 }}>{Math.abs(totalExpense)} ₺</span>
         </div>
-        <div className={styles.transactionInfo}>
+        <div className={styles.transactionInfos}>
           <span>Income:</span>
           <span style={{ color: "#FFB627", fontWeight: 700 }}>{Math.abs(totalIncome)} ₺</span>
         </div>
